@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Animation Demo</title>
+  <style>
+    div {
+        position: absolute;
+        background-color: plum ;
+        left: 50px;
+        width: 90px;
+        height: 90px;
+        margin: 5px;
+    }
+    div {
+        position: relative !important;
+        background-color: palegreen !important;
+        width: 50px !important;
+        height: 50px !important;
+        float: left !important;
+        margin: 5px;
+    }
+    div {
+      position: absolute;
+      width: 200px;
+      border: 2px solid green;
+    }
+    div {
+        width: 200px;
+        height: 1.1em;
+        font-size: 14px;
+        text-align: center;
+    }
+    button{
+        background-color: palevioletred;
+        
+    }
+    button:hover{
+        background-color: aquamarine;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+ 
+<button id="left">&laquo;</button>
+<button id="right">&raquo;</button>
+<br><br>
+<div class="block"></div>
+<br><br><br>
+<p><button id="go">Run »</button></p>
+  <div class="block"></div>
+  <div class="block"></div>
+  <div class="block"></div>
+  <div class="block"></div>
+  <div class="block"></div>
+  <div class="block"></div>
+<br><br><br><br>
+<p><button id="go">Run »</button></p>
+  <div id="block">Hello!!!</div>
+<br><br><br><br>
+    <button id="go1">&raquo; Animate Block1</button>
+    <button id="go2">&raquo; Animate Block2</button>
+    <button id="go3">&raquo; Animate Both</button>
+    <button id="go4">&raquo; Reset</button>
+    <br><br>
+    <div id="block1">Block1</div>
+    <br><br><br>
+<p><div id="block2">Block2</div></p>
+
+<script>
+$( "#right" ).click(function() {
+  $( ".block1" ).animate({ "left": "+=50px" }, "slow" );
+});
+ 
+$( "#left" ).click(function(){
+  $( ".block1" ).animate({ "left": "-=50px" }, "slow" );
+});
+
+$( "#go" ).click(function() {
+    $( ".block" ).first().animate({
+      left: 100
+    }, {
+      duration: 1000,
+      step: function( now, fx ){
+        $( ".block" ).slice( 1 ).css( "left", now );
+      }
+    });
+  });
+
+$( "#go" ).click(function() {
+    $( "#block" ).animate({
+      width: "70%",
+      opacity: 0.4,
+      marginLeft: "0.6in",
+      fontSize: "3em",
+      borderWidth: "10px"
+    }, 1500 );
+  });
+
+$( "#go1" ).click(function() {
+  $( "#block1" )
+    .animate({
+      width: "90%"
+    }, {
+      queue: false,
+      duration: 3000
+    })
+    .animate({ fontSize: "24px" }, 1500 )
+    .animate({ borderRightWidth: "15px" }, 1500 );
+});
+ 
+$( "#go2" ).click(function() {
+  $( "#block2" )
+    .animate({ width: "90%" }, 1000 )
+    .animate({ fontSize: "24px" }, 1000 )
+    .animate({ borderLeftWidth: "15px" }, 1000 );
+});
+ 
+$( "#go3" ).click(function() {
+  $( "#go1" ).add( "#go2" ).click();
+});
+ 
+$( "#go4" ).click(function() {
+  $( "div" ).css({
+    width: "",
+    fontSize: "",
+    borderWidth: ""
+  });
+});
+</script>
+ 
+</body>
+</html>
