@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <title>Animation Demo</title>
   <style>
-    div {
-        position: absolute;
+    div .block1{
+        position: absolute !important;
         background-color: plum ;
         left: 50px;
         width: 90px;
@@ -14,18 +14,17 @@
     }
     div {
         position: relative !important;
-        background-color: palegreen !important;
-        width: 50px !important;
-        height: 50px !important;
-        float: left !important;
+        background-color: palegreen;
+        width: 50px ;
+        height: 50px ;
+        float: left ;
         margin: 5px;
     }
     div {
-      position: absolute;
-      width: 200px;
-      border: 2px solid green;
+      position: absolute !important;
+      border: 2px solid green !important;
     }
-    div {
+    div #block3 #block4 #g03 #g04 #g05 #go6 {
         width: 200px;
         height: 1.1em;
         font-size: 14px;
@@ -46,7 +45,7 @@
 <button id="left">&laquo;</button>
 <button id="right">&raquo;</button>
 <br><br>
-<div class="block"></div>
+<div class="block1"></div>
 <br><br><br>
 <p><button id="go">Run »</button></p>
   <div class="block"></div>
@@ -56,17 +55,17 @@
   <div class="block"></div>
   <div class="block"></div>
 <br><br><br><br>
-<p><button id="go">Run »</button></p>
-  <div id="block">Hello!!!</div>
+<p><button id="go2">Run »</button></p>
+  <div id="block2">Hello!!!</div>
 <br><br><br><br>
-    <button id="go1">&raquo; Animate Block1</button>
-    <button id="go2">&raquo; Animate Block2</button>
-    <button id="go3">&raquo; Animate Both</button>
-    <button id="go4">&raquo; Reset</button>
+    <button id="go3">&raquo; Animate Block3</button>
+    <button id="go4">&raquo; Animate Block4</button>
+    <button id="go5">&raquo; Animate Both</button>
+    <button id="go6">&raquo; Reset</button>
     <br><br>
-    <div id="block1">Block1</div>
+    <div id="block3">Block3</div>
     <br><br><br>
-<p><div id="block2">Block2</div></p>
+<p><div id="block4">Block4</div></p>
 
 <script>
 $( "#right" ).click(function() {
@@ -88,8 +87,8 @@ $( "#go" ).click(function() {
     });
   });
 
-$( "#go" ).click(function() {
-    $( "#block" ).animate({
+$( "#go2" ).click(function() {
+    $( "#block2" ).animate({
       width: "70%",
       opacity: 0.4,
       marginLeft: "0.6in",
@@ -98,8 +97,8 @@ $( "#go" ).click(function() {
     }, 1500 );
   });
 
-$( "#go1" ).click(function() {
-  $( "#block1" )
+$( "#go3" ).click(function() {
+  $( "#block3" )
     .animate({
       width: "90%"
     }, {
@@ -110,18 +109,18 @@ $( "#go1" ).click(function() {
     .animate({ borderRightWidth: "15px" }, 1500 );
 });
  
-$( "#go2" ).click(function() {
-  $( "#block2" )
+$( "#go4" ).click(function() {
+  $( "#block4" )
     .animate({ width: "90%" }, 1000 )
     .animate({ fontSize: "24px" }, 1000 )
     .animate({ borderLeftWidth: "15px" }, 1000 );
 });
  
-$( "#go3" ).click(function() {
-  $( "#go1" ).add( "#go2" ).click();
+$( "#go5" ).click(function() {
+  $( "#go3" ).add( "#go4" ).click();
 });
  
-$( "#go4" ).click(function() {
+$( "#go6" ).click(function() {
   $( "div" ).css({
     width: "",
     fontSize: "",
